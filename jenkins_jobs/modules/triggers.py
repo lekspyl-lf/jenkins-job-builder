@@ -1015,6 +1015,10 @@ def github_pull_request(registry, xml_parent, data):
     black_list_labels_string = "\n".join(data.get('black-list-labels', []))
     XML.SubElement(ghprb, 'blackListLabels').text = black_list_labels_string
     XML.SubElement(ghprb, 'cron').text = data.get('cron', '')
+    included_regions_string = "\n".join(data.get('included-regions', []))
+    XML.SubElement(ghprb, 'includedRegions').text = included_regions_string
+    excluded_regions_string = "\n".join(data.get('excluded-regions', []))
+    XML.SubElement(ghprb, 'excludedRegions').text = excluded_regions_string
 
     build_desc_template = data.get('build-desc-template', '')
     if build_desc_template:
